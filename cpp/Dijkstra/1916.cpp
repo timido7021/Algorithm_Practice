@@ -6,12 +6,16 @@
 
 using namespace std;
 
+// 1916 boj.kr/1916
 int main()
 {
     int n, m;
     cin >> n >> m;
 
+    // 거리 벡터
     vector<int> dist(n, 1e9 + 7);
+
+    // 연결된 간선과 가중치
     vector<list<tuple<int, int>>> adj(n, list<tuple<int, int>>());
     for (int i = 0; i < m; i++)
     {
@@ -29,6 +33,7 @@ int main()
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> PQ;
     PQ.push({0, S});
 
+    // 다익스트라 알고리즘
     while (!PQ.empty())
     {
         auto [currDist, curr] = PQ.top();
